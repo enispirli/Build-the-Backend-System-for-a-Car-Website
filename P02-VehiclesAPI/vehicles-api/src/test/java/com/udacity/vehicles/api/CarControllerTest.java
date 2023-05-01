@@ -146,13 +146,10 @@ public class CarControllerTest {
          *   when the `delete` method is called from the Car Controller. This
          *   should utilize the car from `getCar()` below.
          */
-        Car car = getCar();
-        car.getDetails().setModel("Spark");
-        mvc.perform(put("/cars/1", car)
-                        .content(json.write(car).getJson())
+        mvc.perform(delete("/cars/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     /**
